@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,11 +7,21 @@ import {HttpClient} from '@angular/common/http';
 export class CrudService {
 
   url='http://localhost:8085/';
-
+  ref:any;
+  mang:any;
+  Pc:any;
   constructor(private http: HttpClient) { }
 
   getItems(type :String) {
     return this.http.get(this.url+type);
+  }
+
+  getlinkItem(type :string) {
+    return this.http.get(type);
+  }
+
+  getItemsById(type :String,id:number) {
+    return this.http.get(this.url+type+'/'+id);
   }
 
   addItem(type :String,object: any) {
@@ -25,7 +35,66 @@ export class CrudService {
         }
     );
   }
+  addManagerRefItem(type :String,objectRef: any,objectMan:any) {
+    return this.http.post(this.url+type,objectRef).subscribe(
+      (data)=>{
+        this.ref = data;
+        console.log(data);
+        this.http.post(this.url+'managers',objectMan).subscribe(
+          (data2)=>{
+           this.mang= data2;
+           console.log(data2);
+           this.http.put(this.ref._links.manager.href,this.mang._links.self.href,
+            {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
+            data3 =>{
+              console.log(data3);
+            },error => {
+              console.log(error);
+            }
+           );
+          }
+        );
+        
+      }
+    );
+  }
 
+  addManagerPcompRefItem(type :String,objectRef: any,objectMan:any,objectPc:any) {
+    return this.http.post(this.url+type,objectRef).subscribe(
+      (data)=>{
+        this.ref = data;
+        console.log(data);
+        this.http.post(this.url+'managers',objectMan).subscribe(
+          (data2)=>{
+           this.mang= data2;
+           console.log(data2);
+           this.http.post(this.url+'parentCompanies',objectPc).subscribe(
+            (data3)=>{
+              this.Pc= data3;
+              console.log(data3);
+              this.http.put(this.ref._links.manager.href,this.mang._links.self.href,
+                {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
+                data4 =>{
+                  console.log(data4);
+                  this.http.put(this.ref._links.parentCompany.href,this.Pc._links.self.href,
+                    {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
+                    (data5) =>{
+                      console.log(data5);
+                    },error => {
+                      console.log(error);
+                    }
+                  );
+                }
+               );
+            }
+           );
+          }
+        );
+        
+      }
+    );
+  }
+ 
   updateItem(object) {
     return this.http.put(object._links.self.href,object).subscribe(
         data =>{
@@ -36,6 +105,31 @@ export class CrudService {
         }
     );
   }
+
+  //updatePcDelegItem(objectRef,objectPc) {
+   // return this.http.put(objectRef._links.self.href,objectRef).subscribe(
+     //   data =>{
+       //   console.log(data);
+         // this.http.post(this.url+'parentCompanies',objectPc).subscribe(
+           //// data2 =>{
+              //this.Pc= data2;
+              //console.log(data2);
+              //this.http.put(this.ref._links.parentCompany.href,this.Pc._links.self.href,
+               // {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
+                //(data3) =>{
+                 // console.log(data3);
+                //},error => {
+                 // console.log(error);
+               // }
+              //);
+            //} 
+          //);
+        //},error => {
+          //console.log(error);
+            
+        //}
+    //);
+  //}
 
   deleteItem(object:any) {
     return this.http.delete(object._links.self.href).subscribe(
