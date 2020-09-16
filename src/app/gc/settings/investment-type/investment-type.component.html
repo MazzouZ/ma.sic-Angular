@@ -1,0 +1,53 @@
+<app-header-content [title]="'Investment Type'"></app-header-content>
+<section class="content">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <mat-form-field>
+              <mat-label>
+                <mat-icon>search</mat-icon>
+                Search
+              </mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="Mot Clé ...">
+            </mat-form-field>
+            <button mat-raised-button (click)="openAddDialog()" class="btn btn-dark float-right">Add an Investment Type
+            </button>
+            <div class="mat-elevation-z8">
+              <table mat-table [dataSource]="dataSource" matSort>
+                <!-- libelle --------------------------------------------------->
+                <ng-container matColumnDef="label">
+                  <th class="text-primary" mat-header-cell *matHeaderCellDef mat-sort-header> Label</th>
+                  <td mat-cell *matCellDef="let row"> {{row.label}} </td>
+                </ng-container>
+                <!-- LES ACTIONS --------------------------------------------------->
+                <ng-container matColumnDef="Actions">
+                  <th class="text-primary" mat-header-cell *matHeaderCellDef mat-sort-header> Actions</th>
+                  <td mat-cell *matCellDef="let row">
+                    <mat-chip-list aria-label="Fish selection">
+                      <button class="btn m-2 btn-sm" >
+                        <mat-icon (click)="openModifyDialog(row)">edit</mat-icon>
+                      </button>
+                      <button class="btn m-2 btn-sm" >
+                        <mat-icon color="warn" (click)="deleteinvestment(row)">delete</mat-icon>
+                      </button>
+                    </mat-chip-list>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                </tr>
+              </table>
+
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            </div>
+          </div>
+        </div>
+        <!-- /.card -->
+      </div>
+    </div>
+  </div>
+</section>

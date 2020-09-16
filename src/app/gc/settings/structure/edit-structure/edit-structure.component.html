@@ -1,0 +1,16 @@
+<form (ngSubmit)="submit()" #formControl="ngForm">
+
+  <div class="form">
+    <div class="form-group">
+      <label for="label">Structure</label>
+      <input class="form-control" placeholder="label" [(ngModel)]="data.structure.label" name="label" id="label">
+    </div>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="editStructure()"
+            class="btn btn-dark pull-right">Edit
+    </button>
+    <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+  </div>
+</form>

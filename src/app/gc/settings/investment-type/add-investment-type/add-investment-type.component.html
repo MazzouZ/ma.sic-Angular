@@ -1,0 +1,17 @@
+<form (ngSubmit)="submit()" #formControl="ngForm">
+
+  <div class="form">
+    <div class="form-group">
+      <label for="label">Investment Type</label>
+      <input class="form-control" placeholder="label" [(ngModel)]="data.label" name="label" id="label">
+    </div>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="addInvestment()"
+            class="btn btn-dark pull-right">Add
+    </button>
+    <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+  </div>
+</form>
+
