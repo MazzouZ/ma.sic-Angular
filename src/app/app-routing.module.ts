@@ -7,6 +7,13 @@ import {ActivityAreaComponent} from './gc/settings/activity-area/activity-area.c
 import {DocumentTypeComponent} from './gc/settings/document-type/document-type.component';
 import {InvestmentTypeComponent} from './gc/settings/investment-type/investment-type.component';
 import {StructureComponent} from './gc/settings/structure/structure.component';
+import { ReferenceComponent } from './gc/reference/reference.component';
+import { AddReferenceComponent } from './gc/reference/add-reference/add-reference.component';
+import { DetailComponent } from './gc/reference/detail/detail.component';
+import { EditReferenceComponent } from './gc/reference/edit-reference/edit-reference.component';
+import { AddDelegReferenceComponent } from './gc/reference/add-deleg-reference/add-deleg-reference.component';
+import { EditDelegReferenceComponent } from './gc/reference/edit-deleg-reference/edit-deleg-reference.component';
+import { DetailDelegComponent } from './gc/reference/detail-deleg/detail-deleg.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -16,10 +23,18 @@ const routes: Routes = [
       {path: 'document-type', component: DocumentTypeComponent},
       {path: 'investment-type', component: InvestmentTypeComponent},
       {path: 'structure', component: StructureComponent},
+      {path: 'dashboard',component : TestComponent},
+      {path: 'reference',component : ReferenceComponent},
+      {path: 'addReference',component : AddReferenceComponent},
+      {path: 'editReference',component : EditReferenceComponent},
+      {path: 'detailReference',component : DetailComponent},
+      {path: 'addDelegReference',component : AddDelegReferenceComponent},
+      {path: 'editDelegReference',component : EditDelegReferenceComponent},
+      {path: 'detailDelegReference',component : DetailDelegComponent},
     ]
   },
   {path: 'login', component: LoginComponent}
-];
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

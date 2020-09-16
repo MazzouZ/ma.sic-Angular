@@ -1,0 +1,17 @@
+.width{
+    width: 100%;
+}
+
+.mrg{
+    margin-top: 25px;
+    margin-bottom: 10px;
+    float: right;
+}
+
+.mrgleft{
+    margin-left: 5px; 
+}
+
+.mrgleftact{
+    float: center; 
+}

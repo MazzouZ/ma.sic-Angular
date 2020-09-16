@@ -1,0 +1,82 @@
+<mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup" >
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>First step</ng-template>
+        <div class="form">
+            <div class="form-group">
+              <input class="form-control"  formControlName="socialReason" placeholder="socialReason"  [(ngModel)]="data.socialReason" name="socialReason">
+          </div>
+          <div class="form-group">
+            <input class="form-control" formControlName="publicLiability" placeholder="publicLiability"  [(ngModel)]="data.publicLiability" name="publicLiability">
+        </div>
+        <div class="form-group">
+            <input class="form-control" formControlName="taxIdentification" placeholder="taxIdentification"   [(ngModel)]="data.taxIdentification" name="taxIdentification">
+        </div>
+        <div class="form-group">
+            <input class="form-control"  formControlName="commonCompanyIdentifier" placeholder="commonCompanyIdentifier"  [(ngModel)]="data.commonCompanyIdentifier" name="commonCompanyIdentifier">
+        </div>
+        <div class="form-group">
+            <input class="form-control"  formControlName="numCnss" placeholder="numCnss"  [(ngModel)]="data.numCnss" name="numCnss">
+        </div>
+        </div>  
+        <div>
+          <button class="btn btn-primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>second step</ng-template>
+        <div class="form">
+        <div class="form-group">
+            <input class="form-control" formControlName="adresse" placeholder="adresse"  [(ngModel)]="data.adresse" name="adresse">
+        </div>
+        <div class="form-group">
+            <input class="form-control" formControlName="telephone" placeholder="telephone"  [(ngModel)]="data.telephone" name="telephone">
+        </div>
+        <div class="form-group">
+            <input class="form-control" formControlName="fax" placeholder="fax"  [(ngModel)]="data.fax" name="fax">
+        </div>
+        <div class="form-group">
+            <input class="form-control" formControlName="email" placeholder="email"  [(ngModel)]="data.email" name="email">
+        </div>
+        <div class="form-group">
+            <input class="form-control" formControlName="capitale" placeholder="capitale"  [(ngModel)]="data.capitale" name="capitale">
+        </div>
+        <div class="form-group">
+            <input class="form-control" formControlName="capitalPerShareholder" placeholder="capitalPerShareholder"  [(ngModel)]="data.capitalPerShareholder" name="capitalPerShareholder">
+        </div>
+       </div>
+        <div>
+          <button class="btn btn-danger" matStepperPrevious>Back</button>
+          <button class="btn btn-primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thrdFormGroup">
+        <form [formGroup]="thrdFormGroup">
+      <ng-template matStepLabel>Finale step</ng-template>
+      <div class="form">
+        <div class="form-group">
+            <input class="form-control"  formControlName="activitySector" placeholder="activitySector"  [(ngModel)]="data.activitySector" name="activitySector">
+        </div>
+        <div class="form-group">
+          <input class="form-control"  formControlName="Name" placeholder="GerantName"  [(ngModel)]="manager.name" name="Name">
+      </div>
+      <div class="form-group">
+        <input class="form-control"  formControlName="Firstname" placeholder="GerantFirstname"  [(ngModel)]="manager.firstname" name="Firstname">
+    </div>
+    <div class="form-group">
+      <input class="form-control"  formControlName="Tel" placeholder="GerantTel"  [(ngModel)]="manager.tel" name="Tel">
+  </div>
+  <div class="form-group">
+    <input class="form-control"  formControlName="mail" placeholder="GerantMail"  [(ngModel)]="manager.mail" name="mail">
+</div>
+       </div>
+      <div>
+        <button class="btn btn-danger" matStepperPrevious>Back</button>
+        <button (click)="addRef()" class="btn btn-primary">Ajouter</button>
+      </div>
+        </form>
+    </mat-step>
+  </mat-horizontal-stepper>

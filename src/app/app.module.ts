@@ -13,7 +13,7 @@ import { LoginComponent } from './master/login/login.component';
 import { MasterComponent } from './master/master/master.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivityAreaComponent } from './gc/settings/activity-area/activity-area.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
   MatChipsModule,
@@ -23,7 +23,7 @@ import {
   MatSnackBarModule,
   MatSortModule, MatTableModule
 } from '@angular/material';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { EditActivityComponent } from './gc/settings/activity-area/edit-activity/edit-activity.component';
 import { AddActivityComponent } from './gc/settings/activity-area/add-activity/add-activity.component';
 import { StructureComponent } from './gc/settings/structure/structure.component';
@@ -35,6 +35,19 @@ import { EditDocumentTypeComponent } from './gc/settings/document-type/edit-docu
 import { InvestmentTypeComponent } from './gc/settings/investment-type/investment-type.component';
 import { AddInvestmentTypeComponent } from './gc/settings/investment-type/add-investment-type/add-investment-type.component';
 import { EditInvestmentTypeComponent } from './gc/settings/investment-type/edit-investment-type/edit-investment-type.component';
+import { ReferenceComponent } from './gc/reference/reference.component';
+import { AddReferenceComponent } from './gc/reference/add-reference/add-reference.component';
+import { EditReferenceComponent } from './gc/reference/edit-reference/edit-reference.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { DetailComponent } from './gc/reference/detail/detail.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { AddDelegReferenceComponent } from './gc/reference/add-deleg-reference/add-deleg-reference.component';
+import { EditDelegReferenceComponent } from './gc/reference/edit-deleg-reference/edit-deleg-reference.component';
+import { DetailDelegComponent } from './gc/reference/detail-deleg/detail-deleg.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDividerModule } from '@angular/material/divider';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,29 +70,20 @@ import { EditInvestmentTypeComponent } from './gc/settings/investment-type/edit-
     EditDocumentTypeComponent,
     InvestmentTypeComponent,
     AddInvestmentTypeComponent,
-    EditInvestmentTypeComponent
+    EditInvestmentTypeComponent,
+    ReferenceComponent,
+    AddReferenceComponent,
+    EditReferenceComponent,
+    DetailComponent,
+    AddDelegReferenceComponent,
+    EditDelegReferenceComponent,
+    DetailDelegComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    MatPaginatorModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatIconModule,
-    MatDialogModule,
-    MatChipsModule,
-    MatSortModule,
-    MatButtonModule,
-    MatSelectModule,
-    ReactiveFormsModule,
+    BrowserModule, AppRoutingModule, BrowserAnimationsModule, FormsModule, HttpClientModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatIconModule, MatDialogModule, MatChipsModule, MatSortModule, MatButtonModule, MatSelectModule, ReactiveFormsModule, MatStepperModule, MatTabsModule, MatCheckboxModule, MatRadioModule, MatDividerModule,
   ],
   providers: [AddActivityComponent],
-  entryComponents: [AddActivityComponent,EditActivityComponent,AddDocumentTypeComponent,AddInvestmentTypeComponent,AddStructureComponent,EditDocumentTypeComponent,EditInvestmentTypeComponent,EditStructureComponent],
+  entryComponents: [AddActivityComponent, EditActivityComponent, AddDocumentTypeComponent, AddInvestmentTypeComponent, AddStructureComponent, EditDocumentTypeComponent, EditInvestmentTypeComponent, EditStructureComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
