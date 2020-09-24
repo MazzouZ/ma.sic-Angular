@@ -14,6 +14,9 @@ import { EditReferenceComponent } from './gc/reference/edit-reference/edit-refer
 import { AddDelegReferenceComponent } from './gc/reference/add-deleg-reference/add-deleg-reference.component';
 import { EditDelegReferenceComponent } from './gc/reference/edit-deleg-reference/edit-deleg-reference.component';
 import { DetailDelegComponent } from './gc/reference/detail-deleg/detail-deleg.component';
+import {DocumentComponent} from './gc/document/document.component';
+import {AddDocumentComponent} from './gc/document/add-document/add-document.component';
+import {EditDocumentComponent} from './gc/document/edit-document/edit-document.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -31,6 +34,9 @@ const routes: Routes = [
       {path: 'addDelegReference',component : AddDelegReferenceComponent},
       {path: 'editDelegReference',component : EditDelegReferenceComponent},
       {path: 'detailDelegReference',component : DetailDelegComponent},
+      {path: 'documents',component : DocumentComponent},
+      {path: 'documents/add-document',component : AddDocumentComponent},
+      {path: 'documents/edit-document',component : EditDocumentComponent},
     ]
   },
   {path: 'login', component: LoginComponent}

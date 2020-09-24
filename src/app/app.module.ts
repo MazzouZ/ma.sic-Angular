@@ -15,13 +15,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivityAreaComponent } from './gc/settings/activity-area/activity-area.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
-  MatButtonModule,
-  MatChipsModule,
-  MatDialogModule, MatFormFieldModule,
-  MatIconModule, MatInputModule, MatPaginatorModule,
-  MatSelectModule,
-  MatSnackBarModule,
-  MatSortModule, MatTableModule
+    MatButtonModule,
+    MatChipsModule,
+    MatDialogModule, MatFormFieldModule,
+    MatIconModule, MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    MatSortModule, MatTableModule
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { EditActivityComponent } from './gc/settings/activity-area/edit-activity/edit-activity.component';
@@ -47,6 +47,10 @@ import { DetailDelegComponent } from './gc/reference/detail-deleg/detail-deleg.c
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDividerModule } from '@angular/material/divider';
+import { DocumentComponent } from './gc/document/document.component';
+import { AddDocumentComponent } from './gc/document/add-document/add-document.component';
+import { EditDocumentComponent } from './gc/document/edit-document/edit-document.component';
+import { AlertComponent } from './master/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -77,11 +81,15 @@ import { MatDividerModule } from '@angular/material/divider';
     DetailComponent,
     AddDelegReferenceComponent,
     EditDelegReferenceComponent,
-    DetailDelegComponent
+    DetailDelegComponent,
+    DocumentComponent,
+    AddDocumentComponent,
+    EditDocumentComponent,
+    AlertComponent
   ],
-  imports: [
-    BrowserModule, AppRoutingModule, BrowserAnimationsModule, FormsModule, HttpClientModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatIconModule, MatDialogModule, MatChipsModule, MatSortModule, MatButtonModule, MatSelectModule, ReactiveFormsModule, MatStepperModule, MatTabsModule, MatCheckboxModule, MatRadioModule, MatDividerModule,
-  ],
+    imports: [
+        BrowserModule, AppRoutingModule, BrowserAnimationsModule, FormsModule, HttpClientModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatIconModule, MatDialogModule, MatChipsModule, MatSortModule, MatButtonModule, MatSelectModule, ReactiveFormsModule, MatStepperModule, MatTabsModule, MatCheckboxModule, MatRadioModule, MatDividerModule, MatProgressSpinnerModule,
+    ],
   providers: [AddActivityComponent],
   entryComponents: [AddActivityComponent, EditActivityComponent, AddDocumentTypeComponent, AddInvestmentTypeComponent, AddStructureComponent, EditDocumentTypeComponent, EditInvestmentTypeComponent, EditStructureComponent],
   bootstrap: [AppComponent]
