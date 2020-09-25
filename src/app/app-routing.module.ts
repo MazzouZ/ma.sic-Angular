@@ -14,6 +14,10 @@ import { EditReferenceComponent } from './gc/reference/edit-reference/edit-refer
 import { AddDelegReferenceComponent } from './gc/reference/add-deleg-reference/add-deleg-reference.component';
 import { EditDelegReferenceComponent } from './gc/reference/edit-deleg-reference/edit-deleg-reference.component';
 import { DetailDelegComponent } from './gc/reference/detail-deleg/detail-deleg.component';
+import { ContractComponent } from './gc/contract/contract.component';
+import { AddContractDialogeComponent } from './gc/contract/add-contract-dialoge/add-contract-dialoge.component';
+import { EditContractDialogeComponent } from './gc/contract/edit-contract-dialoge/edit-contract-dialoge.component';
+import { DetailContractComponent } from './gc/contract/detail-contract/detail-contract.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -31,10 +35,15 @@ const routes: Routes = [
       {path: 'addDelegReference',component : AddDelegReferenceComponent},
       {path: 'editDelegReference',component : EditDelegReferenceComponent},
       {path: 'detailDelegReference',component : DetailDelegComponent},
+      {path: 'contract',component : ContractComponent},
+      {path: 'addContract',component : AddContractDialogeComponent},
+      {path: 'editContract',component : EditContractDialogeComponent},
+      {path: 'detailCont',component : DetailContractComponent},
     ]
   },
-  {path: 'login', component: LoginComponent}
-  ];
+  
+  {path: 'login',component : LoginComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

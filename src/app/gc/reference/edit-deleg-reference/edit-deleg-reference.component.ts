@@ -4,6 +4,7 @@ import { ReferenceDelegElement, ManagerElement, ParentCompElement } from '../ref
 import { CrudService } from '../../services/crud.service';
 import { SharingService } from '../../services/sharing.service';
 import { Router } from '@angular/router';
+import { Structure } from '../../settings/structure/structure.component';
 
 @Component({
   selector: 'app-edit-deleg-reference',
@@ -23,6 +24,9 @@ export class EditDelegReferenceComponent implements OnInit {
    manager:ManagerElement={id : 0,name : '',firstname : '',tel : '', mail : ''}; 
  
    parentComp:ParentCompElement={id : 0,socialReason : '',city:'',activitySector:''};
+
+   listStruct:Structure[];
+ selectedValue:Structure;
 
     man:any;
     dat:any;
@@ -53,6 +57,7 @@ export class EditDelegReferenceComponent implements OnInit {
       Firstname: ['', Validators.required],
       Tel: ['', Validators.required],
       mail: ['', Validators.required],
+      structure: [''],
     });
     this.fourthFormGroup = this._formBuilder.group({
       foreignCompanySubsidiary: [false, Validators.required],
@@ -83,19 +88,36 @@ export class EditDelegReferenceComponent implements OnInit {
         );
       }
     );
+    this.getStruct();
   }
 
 
   editDelegRef(){
     if(this.data.foreignCompanySubsidiary){
-    this.crudService.updateItem(this.data);
+    this.crudService.updateRefStructItem(this.data,this.selectedValue);
     this.crudService.updateItem(this.manager);
     this.crudService.updateItem(this.parentComp);
        }else{
-        this.crudService.updateItem(this.data);
+        this.crudService.updateRefStructItem(this.data,this.selectedValue);
         this.crudService.updateItem(this.manager);
        }
     this.route.navigate(['/reference']); 
   }
+
+  getStruct(){
+    this.crudService.getItems('structures').subscribe(
+      (data)=>{
+        // @ts-ignore
+        this.listStruct=data._embedded.structures;
+      }
+    );
+    // @ts-ignore
+    this.crudService.getlinkItem(this.data._links.structure.href).subscribe(
+      (data)=>{
+        // @ts-ignore
+        this.selectedValue=data;
+      }
+    );
+   }
 
 }
