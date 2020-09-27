@@ -42,7 +42,7 @@ export class CrudService {
     return this.http.post(this.url + type, object);
   }
 
-  addManagerRefItem(type: String, objectRef: any, objectMan: any) {
+/*  addManagerRefItem(type: String, objectRef: any, objectMan: any) {
     return this.http.post(this.url + type, objectRef).subscribe(
       (data) => {
         this.ref = data;
@@ -58,7 +58,7 @@ export class CrudService {
               }, error => {
                 console.log(error);
               }
-            );
+            );*/
   addManagerRefItem(type :String,objectRef: any,objectMan:any,objectStruct:any) {
     return this.http.post(this.url+type,objectRef).subscribe(
       (data)=>{
@@ -75,7 +75,7 @@ export class CrudService {
               this.http.put(this.ref._links.structure.href,objectStruct._links.self.href,
                 {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
                 data4 =>{
-                  console.log(data4);   
+                  console.log(data4);
                 },error => {
                   console.log(error);
                 }
@@ -90,7 +90,7 @@ export class CrudService {
       }
     );
   }
-
+/*
   addManagerPcompRefItem(type: String, objectRef: any, objectMan: any, objectPc: any) {
     return this.http.post(this.url + type, objectRef).subscribe(
       (data) => {
@@ -119,7 +119,7 @@ export class CrudService {
                   }
                 );
               }
-            );
+            );*/
   addManagerPcompRefItem(type :String,objectRef: any,objectMan:any,objectPc:any,objectStruct:any) {
     return this.http.post(this.url+type,objectRef).subscribe(
       (data)=>{
@@ -144,7 +144,7 @@ export class CrudService {
                       this.http.put(this.ref._links.structure.href,objectStruct._links.self.href,
                         {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
                         data4 =>{
-                          console.log(data4);   
+                          console.log(data4);
                         },error => {
                           console.log(error);
                         }
@@ -210,7 +210,7 @@ export class CrudService {
           this.http.put(data._links.structure.href,objectStruct._links.self.href,
             {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
             data4 =>{
-              console.log(data4);   
+              console.log(data4);
             },error => {
               console.log(error);
             }
@@ -271,7 +271,7 @@ export class CrudService {
            );
           }
         );
-        
+
       }
       addContractRefDelegItem(type :String,objectCont: any,objectRef:any) {
         return this.http.post(this.url+type,objectCont).subscribe(
@@ -289,8 +289,8 @@ export class CrudService {
                );
               }
             );
-            
-          }   
+
+          }
 
   deleteItem(object: any) {
 
