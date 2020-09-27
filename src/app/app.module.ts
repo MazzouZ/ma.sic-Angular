@@ -15,13 +15,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivityAreaComponent } from './gc/settings/activity-area/activity-area.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
-    MatButtonModule,
-    MatChipsModule,
-    MatDialogModule, MatFormFieldModule,
-    MatIconModule, MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
-    MatSelectModule,
-    MatSnackBarModule,
-    MatSortModule, MatTableModule
+  MatButtonModule,
+  MatChipsModule,
+  MatDialogModule, MatFormFieldModule,
+  MatIconModule, MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
+  MatSelectModule, MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule, MatTableModule
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { EditActivityComponent } from './gc/settings/activity-area/edit-activity/edit-activity.component';
@@ -51,6 +51,10 @@ import { DocumentComponent } from './gc/document/document.component';
 import { AddDocumentComponent } from './gc/document/add-document/add-document.component';
 import { EditDocumentComponent } from './gc/document/edit-document/edit-document.component';
 import { AlertComponent } from './master/alert/alert.component';
+import { PenalityComponent } from './gc/penality/penality.component';
+import { AddPenalityComponent } from './gc/penality/add-penality/add-penality.component';
+import { EditPenalityComponent } from './gc/penality/edit-penality/edit-penality.component';
+import { DetailPenalityComponent } from './gc/penality/detail-penality/detail-penality.component';
 
 @NgModule({
   declarations: [
@@ -85,11 +89,15 @@ import { AlertComponent } from './master/alert/alert.component';
     DocumentComponent,
     AddDocumentComponent,
     EditDocumentComponent,
-    AlertComponent
+    AlertComponent,
+    PenalityComponent,
+    AddPenalityComponent,
+    EditPenalityComponent,
+    DetailPenalityComponent
   ],
-    imports: [
-        BrowserModule, AppRoutingModule, BrowserAnimationsModule, FormsModule, HttpClientModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatIconModule, MatDialogModule, MatChipsModule, MatSortModule, MatButtonModule, MatSelectModule, ReactiveFormsModule, MatStepperModule, MatTabsModule, MatCheckboxModule, MatRadioModule, MatDividerModule, MatProgressSpinnerModule,
-    ],
+  imports: [
+    BrowserModule, AppRoutingModule, BrowserAnimationsModule, FormsModule, HttpClientModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatIconModule, MatDialogModule, MatChipsModule, MatSortModule, MatButtonModule, MatSelectModule, ReactiveFormsModule, MatStepperModule, MatTabsModule, MatCheckboxModule, MatRadioModule, MatDividerModule, MatProgressSpinnerModule, MatSlideToggleModule,
+  ],
   providers: [AddActivityComponent],
   entryComponents: [AddActivityComponent, EditActivityComponent, AddDocumentTypeComponent, AddInvestmentTypeComponent, AddStructureComponent, EditDocumentTypeComponent, EditInvestmentTypeComponent, EditStructureComponent],
   bootstrap: [AppComponent]

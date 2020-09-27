@@ -17,6 +17,10 @@ import { DetailDelegComponent } from './gc/reference/detail-deleg/detail-deleg.c
 import {DocumentComponent} from './gc/document/document.component';
 import {AddDocumentComponent} from './gc/document/add-document/add-document.component';
 import {EditDocumentComponent} from './gc/document/edit-document/edit-document.component';
+import {PenalityComponent} from './gc/penality/penality.component';
+import {AddPenalityComponent} from './gc/penality/add-penality/add-penality.component';
+import {EditPenalityComponent} from './gc/penality/edit-penality/edit-penality.component';
+import {DetailPenalityComponent} from './gc/penality/detail-penality/detail-penality.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -37,6 +41,10 @@ const routes: Routes = [
       {path: 'documents',component : DocumentComponent},
       {path: 'documents/add-document',component : AddDocumentComponent},
       {path: 'documents/edit-document',component : EditDocumentComponent},
+      {path: 'penalities',component : PenalityComponent},
+      {path: 'penalities/add-penality',component : AddPenalityComponent},
+      {path: 'penalities/edit-penality',component : EditPenalityComponent},
+      {path: 'penalities/detail-penality',component : DetailPenalityComponent},
     ]
   },
   {path: 'login', component: LoginComponent}

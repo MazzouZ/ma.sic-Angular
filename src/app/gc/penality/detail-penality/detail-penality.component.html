@@ -1,0 +1,81 @@
+<app-header-content [title]="'Penality'"></app-header-content>
+
+<section class="content">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Penality Details :</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <ng-container *ngIf="penality">
+              <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th>Attribute</th>
+                  <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Amount</td>
+                  <td>{{penality.amount}}</td>
+                </tr>
+                <tr>
+                  <td>Patterns</td>
+                  <td>{{penality.patterns}}</td>
+                </tr>
+                <tr>
+                  <td>Status</td>
+                  <td>{{penality.status}}</td>
+                </tr>
+                <tr>
+                  <td>Regulation Date</td>
+                  <td>{{penality.regulationDate | date}}</td>
+                </tr>
+                <tr>
+                  <td>Amount of Regulation</td>
+                  <td>{{penality.amountRegulation}}</td>
+                </tr>
+               <!-- <tr>
+                  <td>Number of Regulation</td>
+                  <td>{{penality.numRecuRegulation}}</td>
+                </tr>-->
+                <tr>
+                  <td>PJ</td>
+                  <td>{{penality.pj}}</td>
+                </tr>
+                <tr>
+                  <td>Observations</td>
+                  <td>{{penality.observations}}</td>
+                </tr>
+                <tr *ngIf="penality.sDLReference">
+                  <td>SDL Reference </td>
+                  <td>{{penality.sDLReference.socialReason | json}}</td>
+                </tr>
+                <tr *ngIf="penality.delegateReference">
+                  <td>Delegate Reference</td>
+                  <td>{{penality.delegateReference.socialReason | json}}</td>
+                </tr>
+                <tr *ngIf="penality.contrat">
+                  <td>Contract</td>
+                  <td>{{penality.contrat.numContract | json}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </ng-container>
+            <ng-container *ngIf="!penality">
+              Loading .....
+            </ng-container>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+    </div>
+  </div>
+</section>
+
