@@ -1,0 +1,62 @@
+<div class="main-content">
+    <app-header-content [title]="'Contracts'"></app-header-content>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                    <mat-form-field>
+                        <mat-label>
+                          <mat-icon>search</mat-icon> Chercher</mat-label>
+                        <input matInput (keyup)="applyFilter($event)" placeholder="Mot Clé ...">
+                    </mat-form-field>
+                    <button 
+                            mat-raised-button (click)="redirectAdd()" class="btn btn-dark  mrg">Create Contract</button>
+                <div class="mat-elevation-z8">
+                    <table class="width" mat-table [dataSource]="dataSource" matSort>
+              <!-- numContrat --------------------------------------------------->
+                        <ng-container matColumnDef="numContrat">
+                            <th class="text-primary" mat-header-cell *matHeaderCellDef mat-sort-header> numContrat </th>
+                            <td mat-cell *matCellDef="let row"> {{row.numContrat}} </td>
+                        </ng-container>
+               <!-- titleContract --------------------------------------------------->
+                        <ng-container matColumnDef="titleContract">
+                            <th class="text-primary" mat-header-cell *matHeaderCellDef mat-sort-header> titleContract </th>
+                            <td mat-cell *matCellDef="let row"> {{row.titleContract}} </td>
+                        </ng-container>
+                 <!-- contractObject --------------------------------------------------->
+                        <ng-container matColumnDef="contractObject">
+                            <th class="text-primary" mat-header-cell *matHeaderCellDef mat-sort-header> contractObject  </th>
+                            <td mat-cell *matCellDef="let row"> {{row.contractObject}} </td>
+                        </ng-container>
+                <!-- sector --------------------------------------------------->
+                <ng-container matColumnDef="sector">
+                    <th class="text-primary" mat-header-cell *matHeaderCellDef mat-sort-header> sector  </th>
+                    <td mat-cell *matCellDef="let row"> {{row.sector}} </td>
+                </ng-container>        
+             <!-- LES ACTIONS --------------------------------------------------->
+                        <ng-container matColumnDef="Actions">
+                            <th class="text-primary" mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+                            <td mat-cell *matCellDef="let row">
+                                <mat-chip-list aria-label="Fish selection" >
+                                    <button mat-icon-button selected class="btn btn-warning btn-link btn-just-icon mrgleft" (click)="redirectEdit(row)"><mat-icon>edit</mat-icon></button>
+                                    <button mat-icon-button selected class="btn btn-danger btn-link  btn-just-icon mrgleft" (click)="deleteCont(row)"><mat-icon>delete</mat-icon></button>
+                                    <button mat-icon-button selected class="btn btn-dark btn-link  btn-just-icon mrgleft" (click)="detailCont(row)"><mat-icon>article</mat-icon></button>
+                                </mat-chip-list>
+                            </td>
+                        </ng-container>
+  
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                        </tr>
+                    </table>
+  
+                    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                </div>
+            </div>
+                </div>
+        </div>
+    </div>
+  </div>
+  </div>
+  

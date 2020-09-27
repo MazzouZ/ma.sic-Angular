@@ -44,8 +44,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { AddDelegReferenceComponent } from './gc/reference/add-deleg-reference/add-deleg-reference.component';
 import { EditDelegReferenceComponent } from './gc/reference/edit-deleg-reference/edit-deleg-reference.component';
 import { DetailDelegComponent } from './gc/reference/detail-deleg/detail-deleg.component';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatRadioModule } from '@angular/material/radio';
 import { MatDividerModule } from '@angular/material/divider';
 import { DocumentComponent } from './gc/document/document.component';
 import { AddDocumentComponent } from './gc/document/add-document/add-document.component';
@@ -55,6 +53,16 @@ import { PenalityComponent } from './gc/penality/penality.component';
 import { AddPenalityComponent } from './gc/penality/add-penality/add-penality.component';
 import { EditPenalityComponent } from './gc/penality/edit-penality/edit-penality.component';
 import { DetailPenalityComponent } from './gc/penality/detail-penality/detail-penality.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
+import { ContractComponent } from './gc/contract/contract.component';
+import { AddContractDialogeComponent } from './gc/contract/add-contract-dialoge/add-contract-dialoge.component';
+import { EditContractDialogeComponent } from './gc/contract/edit-contract-dialoge/edit-contract-dialoge.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { DetailContractComponent } from './gc/contract/detail-contract/detail-contract.component';
 
 @NgModule({
   declarations: [
@@ -97,9 +105,47 @@ import { DetailPenalityComponent } from './gc/penality/detail-penality/detail-pe
   ],
   imports: [
     BrowserModule, AppRoutingModule, BrowserAnimationsModule, FormsModule, HttpClientModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatIconModule, MatDialogModule, MatChipsModule, MatSortModule, MatButtonModule, MatSelectModule, ReactiveFormsModule, MatStepperModule, MatTabsModule, MatCheckboxModule, MatRadioModule, MatDividerModule, MatProgressSpinnerModule, MatSlideToggleModule,
+    ContractComponent,
+    AddContractDialogeComponent,
+    EditContractDialogeComponent,
+    DetailContractComponent,
+    MatSelectModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    HttpClientModule,
+    FormsModule,
+    MatStepperModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatChipsModule,
+    MatInputModule,
+    MatTabsModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatDividerModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatAutocompleteModule,
   ],
   providers: [AddActivityComponent],
-  entryComponents: [AddActivityComponent, EditActivityComponent, AddDocumentTypeComponent, AddInvestmentTypeComponent, AddStructureComponent, EditDocumentTypeComponent, EditInvestmentTypeComponent, EditStructureComponent],
+  entryComponents: [AddActivityComponent,
+     EditActivityComponent,
+      AddDocumentTypeComponent,
+       AddInvestmentTypeComponent,
+        AddStructureComponent,
+         EditDocumentTypeComponent,
+          EditInvestmentTypeComponent,
+           EditStructureComponent,
+           ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

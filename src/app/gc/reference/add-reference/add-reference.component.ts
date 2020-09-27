@@ -3,6 +3,7 @@ import { CrudService } from '../../services/crud.service';
 import { ReferenceElement, ManagerElement } from '../reference.component';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Structure } from '../../settings/structure/structure.component';
 
 
 @Component({
@@ -18,6 +19,9 @@ export class AddReferenceComponent implements OnInit {
  data:ReferenceElement={id : 0,socialReason : '',publicLiability : '',taxIdentification:'',
  commonCompanyIdentifier:'',numCnss:'',adresse:'',telephone:'',fax:'',capitale:0,capitalPerShareholder:0,
  email:'',activitySector:''};
+
+ listStruct:Structure[];
+ selectedValue:Structure;
 
   manager:ManagerElement={id : 0,name : '',firstname : '',tel : '', mail : ''};
 
@@ -45,14 +49,25 @@ export class AddReferenceComponent implements OnInit {
       Firstname: ['', Validators.required],
       Tel: ['', Validators.required],
       mail: ['', Validators.required],
+      structure: ['', Validators.required],
     });
+    this.getStruct();
   }
 
   public addRef() {
 
-    this.crudService.addManagerRefItem('sDLReferences',this.data,this.manager);
+    this.crudService.addManagerRefItem('sDLReferences',this.data,this.manager,this.selectedValue);
   
     this.route.navigate(['/reference']); 
+ }
+
+ getStruct(){
+  this.crudService.getItems('structures').subscribe(
+    (data)=>{
+      // @ts-ignore
+      this.listStruct=data._embedded.structures;
+    }
+  );
  }
 
 }

@@ -4,6 +4,7 @@ import { SharingService } from '../../services/sharing.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ReferenceElement, ManagerElement } from '../reference.component';
 import { Router } from '@angular/router';
+import { Structure } from '../../settings/structure/structure.component';
 
 @Component({
   selector: 'app-edit-reference',
@@ -19,6 +20,9 @@ export class EditReferenceComponent implements OnInit {
  data:ReferenceElement={id : 0,socialReason : '',publicLiability : '',taxIdentification:'',
  commonCompanyIdentifier:'',numCnss:'',adresse:'',telephone:'',fax:'',capitale:0,capitalPerShareholder:0,
  email:'',activitySector:''};
+
+ listStruct:Structure[];
+ selectedValue:Structure;
 
  manager:ManagerElement={id : 0,name : '',firstname : '',tel : '', mail : ''};
  man:any;
@@ -48,6 +52,7 @@ export class EditReferenceComponent implements OnInit {
       Firstname: ['', Validators.required],
       Tel: ['', Validators.required],
       mail: ['', Validators.required],
+      structure: [''],
     });
 
     this.data = this.interactionService.sharingValue;
@@ -64,12 +69,30 @@ export class EditReferenceComponent implements OnInit {
         );
       }
     );
+
+    this.getStruct();
   }
 
   public updateRef() {
-    this.crudService.updateItem(this.data);
+    this.crudService.updateRefStructItem(this.data,this.selectedValue);
     this.crudService.updateItem(this.manager);
     this.route.navigate(['/reference']); 
   }
+
+  getStruct(){
+    this.crudService.getItems('structures').subscribe(
+      (data)=>{
+        // @ts-ignore
+        this.listStruct=data._embedded.structures;
+      }
+    );
+    // @ts-ignore
+    this.crudService.getlinkItem(this.data._links.structure.href).subscribe(
+      (data)=>{
+        // @ts-ignore
+        this.selectedValue=data;
+      }
+    );
+   }
 
 }

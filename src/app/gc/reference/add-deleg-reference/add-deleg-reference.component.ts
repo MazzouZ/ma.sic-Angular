@@ -3,6 +3,7 @@ import { CrudService } from '../../services/crud.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReferenceDelegElement, ManagerElement, ParentCompElement } from '../reference.component';
+import { Structure } from '../../settings/structure/structure.component';
 
 @Component({
   selector: 'app-add-deleg-reference',
@@ -19,6 +20,9 @@ export class AddDelegReferenceComponent implements OnInit {
  commonCompanyIdentifier:'',numCnss:'',adresse:'',telephone:'',fax:'',capitale:0,capitalPerShareholder:0,
  email:'',activitySector:'',foreignCompanySubsidiary:false};
 
+ listStruct:Structure[];
+ selectedValue:Structure;
+ 
   manager:ManagerElement={id : 0,name : '',firstname : '',tel : '', mail : ''}; 
 
   parentComp:ParentCompElement={id : 0,socialReason : '',city:'',activitySector:''};
@@ -47,6 +51,7 @@ export class AddDelegReferenceComponent implements OnInit {
       Firstname: ['', Validators.required],
       Tel: ['', Validators.required],
       mail: ['', Validators.required],
+      structure: ['', Validators.required],
     });
     this.fourthFormGroup = this._formBuilder.group({
       foreignCompanySubsidiary: [false, Validators.required],
@@ -54,6 +59,8 @@ export class AddDelegReferenceComponent implements OnInit {
       city: ['', Validators.required],
       activitySector: ['', Validators.required],
     });
+
+    this.getStruct();
   }
 
   public addRef() {
@@ -61,12 +68,21 @@ export class AddDelegReferenceComponent implements OnInit {
     
 
     if(this.data.foreignCompanySubsidiary){
-      this.crudService.addManagerPcompRefItem('delegateReferences',this.data,this.manager,this.parentComp);
+      this.crudService.addManagerPcompRefItem('delegateReferences',this.data,this.manager,this.parentComp,this.selectedValue);
     }else{
-      this.crudService.addManagerRefItem('delegateReferences',this.data,this.manager);
+      this.crudService.addManagerRefItem('delegateReferences',this.data,this.manager,this.selectedValue);
     }
   
     this.route.navigate(['/reference']); 
+ }
+
+ getStruct(){
+  this.crudService.getItems('structures').subscribe(
+    (data)=>{
+      // @ts-ignore
+      this.listStruct=data._embedded.structures;
+    }
+  );
  }
 
 }

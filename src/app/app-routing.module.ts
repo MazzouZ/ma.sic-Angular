@@ -21,6 +21,10 @@ import {PenalityComponent} from './gc/penality/penality.component';
 import {AddPenalityComponent} from './gc/penality/add-penality/add-penality.component';
 import {EditPenalityComponent} from './gc/penality/edit-penality/edit-penality.component';
 import {DetailPenalityComponent} from './gc/penality/detail-penality/detail-penality.component';
+import { ContractComponent } from './gc/contract/contract.component';
+import { AddContractDialogeComponent } from './gc/contract/add-contract-dialoge/add-contract-dialoge.component';
+import { EditContractDialogeComponent } from './gc/contract/edit-contract-dialoge/edit-contract-dialoge.component';
+import { DetailContractComponent } from './gc/contract/detail-contract/detail-contract.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -45,10 +49,15 @@ const routes: Routes = [
       {path: 'penalities/add-penality',component : AddPenalityComponent},
       {path: 'penalities/edit-penality',component : EditPenalityComponent},
       {path: 'penalities/detail-penality',component : DetailPenalityComponent},
+      {path: 'contract',component : ContractComponent},
+      {path: 'addContract',component : AddContractDialogeComponent},
+      {path: 'editContract',component : EditContractDialogeComponent},
+      {path: 'detailCont',component : DetailContractComponent},
     ]
   },
-  {path: 'login', component: LoginComponent}
-  ];
+  
+  {path: 'login',component : LoginComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

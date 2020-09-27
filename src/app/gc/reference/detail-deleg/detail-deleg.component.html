@@ -1,44 +1,80 @@
 <div class="margin">
-    <h1>Reference details</h1>
-    <h3 class="text-info">id :</h3><h4> {{data.id}}</h4>
-<mat-divider></mat-divider>
-<h3 class="text-info">socialReason : </h3><h4>{{data.socialReason}}</h4>
-<mat-divider></mat-divider>
-<h3 class="text-info">publicLiability : </h3><h4>{{data.publicLiability}}</h4>
-<mat-divider></mat-divider>
-<h3 class="text-info">taxIdentification : </h3><h4>{{data.taxIdentification}}</h4>
-<mat-divider></mat-divider>
-<h3 class="text-info">commonCompanyIdentifier : </h3><h4>{{data.commonCompanyIdentifier}}</h4>
-<mat-divider></mat-divider>
-<h3 class="text-info">numCnss : </h3><h4>{{data.numCnss}}</h4>
-<mat-divider></mat-divider>
-<h3 class="text-info">adresse : </h3><h4>{{data.adresse}}</h4>
-<mat-divider></mat-divider>
-<h3 class="text-info">telephone : </h3><h4>{{data.telephone}}</h4>
-<mat-divider></mat-divider>
-<h3 class="text-info">fax : </h3><h4>{{data.fax}}</h4>
-<mat-divider></mat-divider>
-<h3 class="text-info">email : </h3><h4>{{data.email}}</h4>
-<mat-divider></mat-divider>
-<h3 class="text-info">capitale : </h3><h4>{{data.capitale}}</h4>
-<mat-divider></mat-divider>
-<h3 class="text-info">capitalPerShareholder : </h3><h4>{{data.capitalPerShareholder}}</h4>
-<mat-divider></mat-divider>
-<h3 class="text-info">activitySector :</h3> <h4>{{data.activitySector}}</h4>
-<mat-divider></mat-divider>
-<h3 class="text-info">Gerantname :</h3> <h4>{{manager.name}}</h4>
-<mat-divider></mat-divider>
-<h3 class="text-info">Gerantfirstname :</h3> <h4>{{manager.firstname}}</h4>
-<mat-divider></mat-divider>
-<h3 class="text-info">Geranttel :</h3> <h4>{{manager.tel}}</h4>
-<mat-divider></mat-divider>
-<h3 class="text-info">GerantactivitySector :</h3> <h4>{{manager.mail}}</h4>
-    <div *ngIf="data.foreignCompanySubsidiary">
-        <mat-divider></mat-divider>
-    <h3 class="text-info">parentCompanySocialReason :</h3> <h4>{{parentComp.socialReason}}</h4>
-    <mat-divider></mat-divider>
-    <h3 class="text-info">parentCompanyCity :</h3> <h4>{{parentComp.city}}</h4>
-    <mat-divider></mat-divider>
-    <h3 class="text-info">parentCompany-activitySector :</h3> <h4>{{parentComp.activitySector}}</h4>
-    </div>
+<h1>Reference details</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-primary">id </td>
+            <td>{{data.id}}</td>
+        </tr>
+        <tr>
+            <td class="text-primary">socialReason</td>
+            <td>{{data.socialReason}}</td>
+        </tr>
+        <tr>
+            <td  class="text-primary"  >publicLiability  </td ><td >{{data.publicLiability}}</td >
+        </tr>
+        <tr>
+            <td class="text-primary"   >taxIdentification  </td ><td >{{data.taxIdentification}}</td >
+        </tr>
+        <tr>
+            <td  class="text-primary"  >commonCompanyIdentifier  </td ><td >{{data.commonCompanyIdentifier}}</td >
+        </tr>
+        <tr>
+            <td  class="text-primary"  >numCnss  </td ><td >{{data.numCnss}}</td >
+        </tr>
+        <tr>
+            <td  class="text-primary"  >adresse  </td ><td >{{data.adresse}}</td >
+        </tr>
+        <tr>
+            <td  class="text-primary"  >telephone  </td ><td >{{data.telephone}}</td >
+        </tr>
+        <tr>
+            <td  class="text-primary"  >fax  </td ><td >{{data.fax}}</td >
+        </tr>
+        <tr>
+            <td  class="text-primary"  >email  </td ><td >{{data.email}}</td >
+        </tr>
+        <tr>
+            <td class="text-primary"   >capitale  </td ><td >{{data.capitale}}</td >
+        </tr>
+        <tr>
+            <td  class="text-primary"  >capitalPerShareholder  </td ><td >{{data.capitalPerShareholder}}</td >
+        </tr>
+        <tr>
+            <td  class="text-primary"  >activitySector </td > <td >{{data.activitySector}}</td >
+        </tr>
+        <tr>
+            <td  class="text-primary"  >Gerantname </td > <td >{{manager.name}}</td >
+        </tr>
+        <tr>
+            <td  class="text-primary"  >Gerantfirstname </td > <td >{{manager.firstname}}</td >
+        </tr>
+        <tr>
+            <td  class="text-primary"  >Geranttel </td > <td >{{manager.tel}}</td >
+        </tr>
+        <tr>
+            <td  class="text-primary"  >GerantactivitySector </td > <td >{{manager.mail}}</td >
+        </tr>
+        <tr>
+            <td  class="text-primary"  >Strucuture </td > <td >{{structure.label}}</td >
+        </tr>
+        <tr *ngIf="data.foreignCompanySubsidiary">
+            <td  class="text-primary"   >parentCompanySocialReason </td > <td >{{parentComp.socialReason}}</td >
+        </tr>
+        <tr *ngIf="data.foreignCompanySubsidiary">
+            <td  class="text-primary"   >parentCompanyCity </td > <td >{{parentComp.city}}</td >
+        </tr>
+        <tr *ngIf="data.foreignCompanySubsidiary">
+            <td  class="text-primary"   >parentCompany-activitySector </td > <td >{{parentComp.activitySector}}</td >
+        </tr>
+    </tbody>
+</table>
+
+
     </div>
