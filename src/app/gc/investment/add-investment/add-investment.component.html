@@ -1,0 +1,55 @@
+<app-header-content [title]="'Add an investment'"></app-header-content>
+    <form [formGroup]="firstFormGroup">
+        <div class="form">
+        <div class="form-group">
+            <input class="form-control"  formControlName="montant" placeholder="montant" [(ngModel)]="data.montant" name="montant">
+        </div>
+        <div class="form-group">
+            <input class="form-control"  formControlName="objectifs" placeholder="objectifs" [(ngModel)]="data.objectifs" name="objectifs">
+        </div>
+        <div class="form-group">
+            <mat-select class="form-control"  formControlName="InvTypes" placeholder="Select a Investment Type" [(ngModel)]="selectedValueInv" name="InvTypes">
+                <mat-option *ngFor="let rf of InvTypes" [value]="rf">
+                {{rf.label}}
+                </mat-option>
+            </mat-select>
+            </div>
+        <div class="form-group">
+            <input class="form-control"  formControlName="status" placeholder="status" [(ngModel)]="data.status" name="status">
+        </div>
+        <div class="form-group">
+            <input class="form-control"  formControlName="pj" placeholder="pj" [(ngModel)]="data.pj" name="pj">
+        </div>
+        <div class="form-group">
+            <input class="form-control"  formControlName="observations" placeholder="observations" [(ngModel)]="data.observations" name="observations">
+        </div>
+        <section class="example-section">
+            <label class="example-margin">Reference type:</label>
+            <mat-radio-group [(ngModel)]="referenceType" formControlName="referenceType">
+              <mat-radio-button class="example-margin" [value]="false">SDL</mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="true">Delegataire</mat-radio-button>
+            </mat-radio-group>
+          </section>
+        <div *ngIf="!referenceType">  
+            <div class="form-group">
+            <mat-select class="form-control"  formControlName="reference" placeholder="Select a SDL reference" [(ngModel)]="selectedValue" name="reference">
+                <mat-option *ngFor="let rf of refSDL" [value]="rf">
+                {{rf.socialReason}}
+                </mat-option>
+            </mat-select>
+            </div>
+        </div>
+        <div *ngIf="referenceType">
+            <div class="form-group">
+                <mat-select class="form-control"  formControlName="referencedeleg" placeholder="Select a delegator reference" [(ngModel)]="selectedValueDeleg" name="referencedeleg">
+                    <mat-option *ngFor="let rf of refdeleg" [value]="rf">
+                    {{rf.socialReason}}
+                    </mat-option>
+                </mat-select>
+                </div>
+        </div> 
+        </div>  
+        <div>
+          <button class="btn btn-primary"  (click)="addInv()">Add</button>
+        </div>
+      </form>

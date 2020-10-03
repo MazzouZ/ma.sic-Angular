@@ -25,6 +25,10 @@ import { ContractComponent } from './gc/contract/contract.component';
 import { AddContractDialogeComponent } from './gc/contract/add-contract-dialoge/add-contract-dialoge.component';
 import { EditContractDialogeComponent } from './gc/contract/edit-contract-dialoge/edit-contract-dialoge.component';
 import { DetailContractComponent } from './gc/contract/detail-contract/detail-contract.component';
+import { AddInvestmentComponent } from './gc/investment/add-investment/add-investment.component';
+import { EditInvestmentComponent } from './gc/investment/edit-investment/edit-investment.component';
+import { DetailInvestmentComponent } from './gc/investment/detail-investment/detail-investment.component';
+import { InvestmentComponent } from './gc/investment/investment.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -53,6 +57,10 @@ const routes: Routes = [
       {path: 'addContract',component : AddContractDialogeComponent},
       {path: 'editContract',component : EditContractDialogeComponent},
       {path: 'detailCont',component : DetailContractComponent},
+      {path: 'Investment',component : InvestmentComponent},
+      {path: 'addInvestment',component : AddInvestmentComponent},
+      {path: 'editInvestment',component : EditInvestmentComponent},
+      {path: 'detailInvestment',component : DetailInvestmentComponent},
     ]
   },
   

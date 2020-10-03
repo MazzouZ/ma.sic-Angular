@@ -59,7 +59,7 @@ export class CrudService {
                 console.log(error);
               }
             );*/
-  addManagerRefItem(type :String,objectRef: any,objectMan:any,objectStruct:any) {
+  addManagerRefItem(type :String,objectRef: any,objectMan:any,objectStruct:any,objectDocStatus:any,objectDocModj:any) {
     return this.http.post(this.url+type,objectRef).subscribe(
       (data)=>{
         this.ref = data;
@@ -76,6 +76,22 @@ export class CrudService {
                 {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
                 data4 =>{
                   console.log(data4);
+                  this.http.put(this.ref._links.Status.href,objectDocStatus._links.self.href,
+                    {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
+                    data5 =>{
+                      console.log(data5);
+                      this.http.put(this.ref._links.ModeleJ.href,objectDocModj._links.self.href,
+                        {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
+                        data6 =>{
+                          console.log(data6);
+                        },error => {
+                          console.log(error);
+                        }
+                       );
+                    },error => {
+                      console.log(error);
+                    }
+                   );
                 },error => {
                   console.log(error);
                 }
@@ -120,7 +136,7 @@ export class CrudService {
                 );
               }
             );*/
-  addManagerPcompRefItem(type :String,objectRef: any,objectMan:any,objectPc:any,objectStruct:any) {
+  addManagerPcompRefItem(type :String,objectRef: any,objectMan:any,objectPc:any,objectStruct:any,objectDocModj:any,objectDocStatus:any) {
     return this.http.post(this.url+type,objectRef).subscribe(
       (data)=>{
         this.ref = data;
@@ -143,8 +159,24 @@ export class CrudService {
                       console.log(data5);
                       this.http.put(this.ref._links.structure.href,objectStruct._links.self.href,
                         {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
-                        data4 =>{
-                          console.log(data4);
+                        data7 =>{
+                          console.log(data7);
+                          this.http.put(this.ref._links.Status.href,objectDocStatus._links.self.href,
+                            {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
+                            data5 =>{
+                              console.log(data5);
+                              this.http.put(this.ref._links.ModeleJ.href,objectDocModj._links.self.href,
+                                {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
+                                data6 =>{
+                                  console.log(data6);
+                                },error => {
+                                  console.log(error);
+                                }
+                               );
+                            },error => {
+                              console.log(error);
+                            }
+                           );
                         },error => {
                           console.log(error);
                         }
@@ -255,6 +287,48 @@ export class CrudService {
     );
   }
 
+  updateInvestmentRef(objectInv: any,objectInvType:any,objectRef:any,refType:any) {
+    return this.http.put(objectInv._links.self.href,objectInv).subscribe(
+        data =>{
+          console.log(data);
+          // @ts-ignore
+          this.http.put(data._links.investmentType.href,objectInvType._links.self.href,
+            {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
+            data4 =>{
+              console.log(data4);
+              if(!refType){
+                // @ts-ignore
+                this.http.put(data._links.sDLReference.href,objectRef._links.self.href,
+                  {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
+                  data3 =>{
+                    console.log(data3);
+                  },error => {
+                    console.log(error);
+                  }
+                 );
+                }
+                else{
+                  // @ts-ignore
+                this.http.put(data._links.delegateReference.href,objectRef._links.self.href,
+                  {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
+                  data4 =>{
+                    console.log(data4);
+                  },error => {
+                    console.log(error);
+                  }
+                 );
+                }
+            },error => {
+              console.log(error);
+            }
+           );
+        },error => {
+          console.log(error);
+
+        }
+    );
+  }
+
   addContractRefSDLItem(type :String,objectCont: any,objectRef:any) {
     return this.http.post(this.url+type,objectCont).subscribe(
       (data)=>{
@@ -291,6 +365,45 @@ export class CrudService {
             );
 
           }
+          addInvestmentRefItem(type :String,objectInv: any,objectRef:any,objectInvType:any,refType:any) {
+            return this.http.post(this.url+type,objectInv).subscribe(
+              (data)=>{
+                console.log(objectRef);
+                console.log(data);
+                // @ts-ignore
+                this.http.put(data._links.investmentType.href,objectInvType._links.self.href,
+                  {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
+                  data2 =>{
+                    console.log(data2);
+                    if(!refType){
+                      // @ts-ignore
+                         this.http.put(data._links.sDLReference.href,objectRef._links.self.href,
+                          {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
+                          data3 =>{
+                            console.log(data3);
+                          },error => {
+                            console.log(error);
+                          }
+                         );
+                        }else{
+                           // @ts-ignore
+                         this.http.put(data._links.delegateReference.href,objectRef._links.self.href,
+                          {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
+                          data3 =>{
+                            console.log(data3);
+                          },error => {
+                            console.log(error);
+                          }
+                         );
+                         }
+                  },error => {
+                    console.log(error);
+                  }
+                 );
+                  }
+                );
+        
+              }
 
   deleteItem(object: any) {
 

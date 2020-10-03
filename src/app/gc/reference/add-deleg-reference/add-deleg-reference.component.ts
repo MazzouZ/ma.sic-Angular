@@ -22,6 +22,9 @@ export class AddDelegReferenceComponent implements OnInit {
 
  listStruct:Structure[];
  selectedValue:Structure;
+ listDoc:Document[];
+ selectedValueStatus:Document;
+ selectedValueModeleJ:Document;
  
   manager:ManagerElement={id : 0,name : '',firstname : '',tel : '', mail : ''}; 
 
@@ -52,6 +55,8 @@ export class AddDelegReferenceComponent implements OnInit {
       Tel: ['', Validators.required],
       mail: ['', Validators.required],
       structure: ['', Validators.required],
+      Status: ['', Validators.required],
+      ModeleJ: ['', Validators.required],
     });
     this.fourthFormGroup = this._formBuilder.group({
       foreignCompanySubsidiary: [false, Validators.required],
@@ -60,7 +65,7 @@ export class AddDelegReferenceComponent implements OnInit {
       activitySector: ['', Validators.required],
     });
 
-    this.getStruct();
+    this.getStructDoc();
   }
 
   public addRef() {
@@ -68,19 +73,28 @@ export class AddDelegReferenceComponent implements OnInit {
     
 
     if(this.data.foreignCompanySubsidiary){
-      this.crudService.addManagerPcompRefItem('delegateReferences',this.data,this.manager,this.parentComp,this.selectedValue);
+      this.crudService.addManagerPcompRefItem('delegateReferences',this.data,this.manager,this.parentComp
+      ,this.selectedValue,this.selectedValueStatus,this.selectedValueModeleJ);
     }else{
-      this.crudService.addManagerRefItem('delegateReferences',this.data,this.manager,this.selectedValue);
+      this.crudService.addManagerRefItem('delegateReferences',this.data,this.manager,this.selectedValue,
+      this.selectedValueStatus,this.selectedValueModeleJ);
     }
   
     this.route.navigate(['/reference']); 
  }
 
- getStruct(){
+ getStructDoc(){
   this.crudService.getItems('structures').subscribe(
     (data)=>{
       // @ts-ignore
       this.listStruct=data._embedded.structures;
+    }
+  );
+  
+  this.crudService.getItems('documents').subscribe(
+    (data)=>{
+      // @ts-ignore
+      this.listDoc=data._embedded.documents;
     }
   );
  }
