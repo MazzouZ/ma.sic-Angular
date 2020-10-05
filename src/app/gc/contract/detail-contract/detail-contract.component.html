@@ -1,54 +1,89 @@
-<div class="margin">
-    <h1>Contract details</h1>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="text-primary">id </td>
-                <td>{{data.id}}</td>
-            </tr>
-            <tr>
-                <td class="text-primary">numContrat</td>
-                <td>{{data.numContrat}}</td>
-            </tr>
-            <tr>
-                <td  class="text-primary"  >titleContract  </td ><td >{{data.titleContract}}</td >
-            </tr>
-            <tr>
-                <td class="text-primary"   >contractObject  </td ><td >{{data.contractObject}}</td >
-            </tr>
-            <tr>
-                <td  class="text-primary"  >effectiveDate  </td ><td >{{data.effectiveDate}}</td >
-            </tr>
-            <tr>
-                <td  class="text-primary"  >endDate  </td ><td >{{data.endDate}}</td >
-            </tr>
-            <tr>
-                <td  class="text-primary"  >sector  </td ><td >{{data.sector}}</td >
-            </tr>
-            <tr>
-                <td  class="text-primary"  >contractAmount  </td ><td >{{data.contractAmount}}</td >
-            </tr>
-            <tr>
-                <td  class="text-primary"  >numMarket  </td ><td >{{data.numMarket}}</td >
-            </tr>
-            <tr>
-                <td  class="text-primary"  >pi  </td ><td >{{data.pi}}</td >
-            </tr>
-            <tr>
-                <td class="text-primary"   >observations  </td ><td >{{data.observations}}</td >
-            </tr>
-            <tr>
-                <td  class="text-primary"  >Reference socialReason  </td ><td >{{ref.socialReason}}</td >
-            </tr>
-        </tbody>
-    </table>
-    
-    
+<app-header-content [title]="'Contract'"></app-header-content>
+
+<section class="content">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Contract Details :</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <ng-container *ngIf="data">
+              <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td class="text-primary">numContrat</td>
+                  <td>{{data.numContrat}}</td>
+                </tr>
+                <tr>
+                  <td class="text-primary">titleContract</td>
+                  <td>{{data.titleContract}}</td>
+                </tr>
+                <tr>
+                  <td class="text-primary">contractObject</td>
+                  <td>{{data.contractObject}}</td>
+                </tr>
+                <tr>
+                  <td class="text-primary">effectiveDate</td>
+                  <td>{{data.effectiveDate}}</td>
+                </tr>
+                <tr>
+                  <td class="text-primary">endDate</td>
+                  <td>{{data.endDate}}</td>
+                </tr>
+                <tr>
+                  <td class="text-primary">sector</td>
+                  <td>{{data.sector}}</td>
+                </tr>
+                <tr>
+                  <td class="text-primary">contractAmount</td>
+                  <td>{{data.contractAmount}}</td>
+                </tr>
+                <tr>
+                  <td class="text-primary">numMarket</td>
+                  <td>{{data.numMarket}}</td>
+                </tr>
+                <tr>
+                  <td class="text-primary">pi</td>
+                  <td>{{data.pi}}</td>
+                </tr>
+                <tr>
+                  <td class="text-primary">observations</td>
+                  <td>{{data.observations}}</td>
+                </tr>
+                <tr *ngIf="ref">
+                  <td class="text-primary">Reference socialReason</td>
+                  <td>{{ref.socialReason}}</td>
+                </tr>
+                <tr *ngIf="data.signedMarket">
+                  <td class="text-primary">Market signed</td>
+                  <td>{{data.signedMarket.documentName}}</td>
+                </tr>
+                <tr *ngIf="data.signedContract">
+                  <td class="text-primary">Contract signed</td>
+                  <td>{{data.signedContract.documentName}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </ng-container>
+            <ng-container *ngIf="!data">
+              Loading .....
+            </ng-container>
+          </div>
+          <!-- /.card-body -->
         </div>
-    
+        <!-- /.card -->
+      </div>
+    </div>
+  </div>
+</section>
+

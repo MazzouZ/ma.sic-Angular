@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContractElement } from '../contract.component';
 import { ReferenceDelegElement, ReferenceElement } from '../../reference/reference.component';
+import {Document} from "../../document/document.component";
 
 @Component({
   selector: 'app-add-contract-dialoge',
@@ -22,6 +23,10 @@ export class AddContractDialogeComponent implements OnInit {
   selectedValue:ReferenceElement;
   selectedValueDeleg:ReferenceDelegElement;
   referenceType:boolean=false;
+
+  documents:Document;
+  signedMarket: any;
+  signedContract: any;
 
   constructor(private crudService:CrudService,private route:Router,private _formBuilder: FormBuilder,
      private _snackBar: MatSnackBar) {
@@ -41,25 +46,29 @@ ngOnInit(): void {
     observations: ['', Validators.required],
     reference: ['', Validators.required],
     referencedeleg: ['', Validators.required],
-    referenceType: [false, Validators.required]
+    referenceType: [false, Validators.required],
+    signedMarket:['', Validators.required],
+    signedContract:['', Validators.required],
   });
-  
+
     this.getRef();
-    
+
 }
 
 public addCont() {
+    //console.log(this.signedMarket);
   if(this.referenceType){
-  this.crudService.addContractRefDelegItem('contrats',this.data,this.selectedValueDeleg);
+  this.crudService.addContractRefDelegItem('contrats',this.data,this.selectedValueDeleg, this.signedMarket, this.signedContract);
    }else{
-     this.crudService.addContractRefSDLItem('contrats',this.data,this.selectedValue);
+     this.crudService.addContractRefSDLItem('contrats',this.data,this.selectedValue, this.signedMarket, this.signedContract);
    }
+
    this._snackBar.open('Element Created',"",{
      duration: 2000,
      verticalPosition: 'top',
      panelClass: ['snackbarSuccess']
    });
-   this.route.navigate(['/contract']); 
+   this.route.navigate(['/contract']);
 }
 
 getRef(){
@@ -68,14 +77,20 @@ getRef(){
      // @ts-ignore
      this.refdeleg = data._embedded.delegateReferences;
      });
-   
+
 
  this.crudService.getItems("sDLReferences").subscribe(
   (data)=>{
      // @ts-ignore
     this.refSDL = data._embedded.sDLReferences;
-      
+
      });
-  
+ this.crudService.getItems('documents').subscribe(
+   (data)=>{
+     // @ts-ignore
+     this.documents = data._embedded.documents;
+
+   });
+
 }
 }
