@@ -22,6 +22,8 @@ export interface ContractElement {
   numMarket: String;
   pi: String;
   observations: String;
+  signedContract?:any;
+  signedMarket?:any;
 }
 
 @Component({
@@ -39,9 +41,9 @@ export class ContractComponent implements OnInit {
 
     @ViewChild(MatSort, {static: true}) sort: MatSort;
     @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  
+
     ngOnInit() {
-          
+
           setTimeout(()=>{
             this.getCont();
           },1000);
@@ -63,7 +65,7 @@ export class ContractComponent implements OnInit {
     applyFilter(event: Event) {
       const filterValue = (event.target as HTMLInputElement).value;
       this.dataSource.filter = filterValue.trim().toLowerCase();
-  
+
       if (this.dataSource.paginator) {
         this.dataSource.paginator.firstPage();
       }

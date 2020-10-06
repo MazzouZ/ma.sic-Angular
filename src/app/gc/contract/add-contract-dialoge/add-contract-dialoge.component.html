@@ -1,67 +1,106 @@
 <app-header-content [title]="'Add Contract'"></app-header-content>
-    <form [formGroup]="firstFormGroup">
-        <div class="form">
-            <div class="form-group">
-              <input class="form-control "  formControlName="numContrat" placeholder="numContrat" [(ngModel)]="data.numContrat" name="numContrat">
+
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6 m-auto">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Add Contract</h3>
           </div>
-          <div class="form-group">
-            <input class="form-control" formControlName="titleContract" placeholder="titleContract" [(ngModel)]="data.titleContract" name="titleContract">
-        </div>
-        <div class="form-group">
-            <input class="form-control" formControlName="contractObject" placeholder="contractObject" [(ngModel)]="data.contractObject" name="contractObject">
-        </div>
-        <div class="form-group">
-            <input [matDatepicker]="dp3" class="form-control example-width"  formControlName="effectiveDate" placeholder="effectiveDate" [(ngModel)]="data.effectiveDate" name="effectiveDate" disabled>
-            <mat-datepicker-toggle class="flot" matSuffix [for]="dp3"></mat-datepicker-toggle>
-            <mat-datepicker #dp3 disabled="false"></mat-datepicker>
-        </div>
-        <div class="form-group">
-            <input [matDatepicker]="dp2" class="form-control example-width"  formControlName="endDate" placeholder="endDate" [(ngModel)]="data.endDate" name="endDate" disabled>
-            <mat-datepicker-toggle class="flot" matSuffix [for]="dp2"></mat-datepicker-toggle>
-            <mat-datepicker #dp2 disabled="false"></mat-datepicker>
-        </div>
-        <div class="form-group">
-            <input class="form-control"  formControlName="sector" placeholder="sector" [(ngModel)]="data.sector" name="sector">
-        </div>
-        <div class="form-group">
-            <input class="form-control"  formControlName="contractAmount" placeholder="contractAmount" [(ngModel)]="data.contractAmount" name="contractAmount">
-        </div>
-        <div class="form-group">
-            <input class="form-control"  formControlName="numMarket" placeholder="numMarket" [(ngModel)]="data.numMarket" name="numMarket">
-        </div>
-        <div class="form-group">
-            <input class="form-control"  formControlName="pi" placeholder="pi" [(ngModel)]="data.pi" name="pi">
-        </div>
-        <div class="form-group">
-            <input class="form-control"  formControlName="observations" placeholder="observations" [(ngModel)]="data.observations" name="observations">
-        </div>
-        <section class="example-section">
-            <label class="example-margin">Reference type:</label>
-            <mat-radio-group [(ngModel)]="referenceType" formControlName="referenceType">
-              <mat-radio-button class="example-margin" [value]="false">SDL</mat-radio-button>
-              <mat-radio-button class="example-margin" [value]="true">Delegataire</mat-radio-button>
-            </mat-radio-group>
-          </section>
-        <div *ngIf="!referenceType">  
-            <div class="form-group">
-            <mat-select class="form-control"  formControlName="reference" placeholder="Select a reference" [(ngModel)]="selectedValue" name="reference">
-                <mat-option *ngFor="let rf of refSDL" [value]="rf">
-                {{rf.socialReason}}
-                </mat-option>
-            </mat-select>
-            </div>
-        </div>
-        <div *ngIf="referenceType">
-            <div class="form-group">
-                <mat-select class="form-control"  formControlName="referencedeleg" placeholder="select a reference" [(ngModel)]="selectedValueDeleg" name="referencedeleg">
-                    <mat-option *ngFor="let rf of refdeleg" [value]="rf">
-                    {{rf.socialReason}}
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form [formGroup]="firstFormGroup">
+            <div class="form">
+              <div class="form-group">
+                <input class="form-control "  formControlName="numContrat" placeholder="numContrat" [(ngModel)]="data.numContrat" name="numContrat">
+              </div>
+              <div class="form-group">
+                <input class="form-control" formControlName="titleContract" placeholder="titleContract" [(ngModel)]="data.titleContract" name="titleContract">
+              </div>
+              <div class="form-group">
+                <input class="form-control" formControlName="contractObject" placeholder="contractObject" [(ngModel)]="data.contractObject" name="contractObject">
+              </div>
+              <div class="form-group">
+                <input [matDatepicker]="dp3" class="form-control example-width"  formControlName="effectiveDate" placeholder="effectiveDate" [(ngModel)]="data.effectiveDate" name="effectiveDate" disabled>
+                <mat-datepicker-toggle class="flot" matSuffix [for]="dp3"></mat-datepicker-toggle>
+                <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+              </div>
+              <div class="form-group">
+                <input [matDatepicker]="dp2" class="form-control example-width"  formControlName="endDate" placeholder="endDate" [(ngModel)]="data.endDate" name="endDate" disabled>
+                <mat-datepicker-toggle class="flot" matSuffix [for]="dp2"></mat-datepicker-toggle>
+                <mat-datepicker #dp2 disabled="false"></mat-datepicker>
+              </div>
+              <div class="form-group">
+                <input class="form-control"  formControlName="sector" placeholder="sector" [(ngModel)]="data.sector" name="sector">
+              </div>
+              <div class="form-group">
+                <input class="form-control"  formControlName="contractAmount" placeholder="contractAmount" [(ngModel)]="data.contractAmount" name="contractAmount">
+              </div>
+              <div class="form-group">
+                <input class="form-control"  formControlName="numMarket" placeholder="numMarket" [(ngModel)]="data.numMarket" name="numMarket">
+              </div>
+              <div class="form-group">
+                <input class="form-control"  formControlName="pi" placeholder="pi" [(ngModel)]="data.pi" name="pi">
+              </div>
+              <div class="form-group">
+                <input class="form-control"  formControlName="observations" placeholder="observations" [(ngModel)]="data.observations" name="observations">
+              </div>
+              <section class="example-section">
+                <label class="example-margin">Reference type:</label>
+                <mat-radio-group [(ngModel)]="referenceType" formControlName="referenceType">
+                  <mat-radio-button class="example-margin" [value]="false">SDL</mat-radio-button>
+                  <mat-radio-button class="example-margin" [value]="true">Delegataire</mat-radio-button>
+                </mat-radio-group>
+              </section>
+              <div *ngIf="!referenceType">
+                <div class="form-group">
+                  <mat-select class="form-control"  formControlName="reference" placeholder="Select a reference" [(ngModel)]="selectedValue" name="reference">
+                    <mat-option *ngFor="let rf of refSDL" [value]="rf">
+                      {{rf.socialReason}}
                     </mat-option>
-                </mat-select>
+                  </mat-select>
                 </div>
-        </div> 
-        </div>  
-        <div>
-          <button class="btn btn-primary"  (click)="addCont()">Add</button>
+              </div>
+              <div *ngIf="referenceType">
+                <div class="form-group">
+                  <mat-select class="form-control"  formControlName="referencedeleg" placeholder="select a reference" [(ngModel)]="selectedValueDeleg" name="referencedeleg">
+                    <mat-option *ngFor="let rf of refdeleg" [value]="rf">
+                      {{rf.socialReason}}
+                    </mat-option>
+                  </mat-select>
+                </div>
+              </div>
+              <!--********************************************************-->
+              <div class="form-group">
+                <mat-select class="form-control"  formControlName="signedMarket" placeholder="select a signed Market document" [(ngModel)]="signedMarket" name="signedMarket">
+                  <mat-option *ngFor="let doc of documents" [value]="doc">
+                    {{doc.documentName}}
+                  </mat-option>
+                </mat-select>
+              </div>
+              <div class="form-group">
+                <mat-select class="form-control"  formControlName="signedContract" placeholder="select a signed Contract" [(ngModel)]="signedContract" name="signedContract">
+                  <mat-option *ngFor="let doc of documents" [value]="doc">
+                    {{doc.documentName}}
+                  </mat-option>
+                </mat-select>
+              </div>
+              <!--******************************************************-->
+            </div>
+            <div>
+              <button class="btn btn-primary"  (click)="addCont()">Add</button>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
