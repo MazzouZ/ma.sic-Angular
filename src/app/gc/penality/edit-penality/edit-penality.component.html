@@ -10,51 +10,7 @@
           <!-- /.card-header -->
           <!-- form start -->
           <form role="form" >
-            <div class="card-body">
-
-              <div class="form-group">
-                <label id="example-radio-group-label">Pick your favorite option :</label> <br>
-                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group m-auto"
-                                 [(ngModel)]="favoriteOption" name="favoriteOption" (change)="optionChanged()">
-                  <mat-radio-button class="example-radio-button m-auto" *ngFor="let cOr of contractOrReference" [value]="cOr">
-                    {{cOr}}
-                  </mat-radio-button>
-                </mat-radio-group>
-                <div>Your Penality is for a : {{favoriteOption}}</div>
-              </div>
-
-              <div class="form-group" *ngIf="favoriteOption === 'Reference Delegator'">
-                <label for="delegateReference">Reference Delegator</label>
-                <select type="text" class="form-control" id="delegateReference"
-                        [(ngModel)]="penalityForId" name="delegateReference" >
-                  <option></option>
-                  <ng-container *ngFor="let objet of list">
-                    <option [value]="objet.id">{{objet.socialReason}}</option>
-                  </ng-container>
-                </select>
-              </div>
-
-              <div class="form-group" *ngIf="favoriteOption === 'Reference SDL'">
-                <label for="sDLReference">Reference SDL</label>
-                <select type="text" class="form-control" id="sDLReference"
-                        [(ngModel)]="penalityForId" name="sDLReference">
-                  <option></option>
-                  <ng-container *ngFor="let objet of list">
-                    <option [value]="objet.id">{{objet.socialReason}}</option>
-                  </ng-container>
-                </select>
-              </div>
-
-              <div class="form-group" *ngIf="favoriteOption === 'Contract'">
-                <label for="contrat">Contract</label>
-                <select type="text" class="form-control" id="contrat"
-                        [(ngModel)]="penalityForId" name="contrat">
-                  <option></option>
-                  <ng-container *ngFor="let objet of list">
-                    <option [value]="objet.id">{{objet.numContract}}</option>
-                  </ng-container>
-                </select>
-              </div>
+           <div class="card-body">
               <!-- $$*******************************************************-->
               <div class="form-group">
                 <label for="amount">Amount</label>

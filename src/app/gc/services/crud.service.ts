@@ -234,8 +234,8 @@ export class CrudService {
           this.http.put(data._links.sDLReference.href, objectRef._links.self.href,
             {headers: new HttpHeaders({'Content-Type': 'text/uri-list'})}).subscribe(
             data3 => {
-              const signedMarket:string = data._links.signedMarket.href.replace('{?projection}', '');
-              const signedContract:string = data._links.signedContract.href.replace('{?projection}', '');
+              const signedMarket: string = data._links.signedMarket.href.replace('{?projection}', '');
+              const signedContract: string = data._links.signedContract.href.replace('{?projection}', '');
 
               this.http.put(signedMarket, documentSignedMarket._links.self.href, {headers: new HttpHeaders({'Content-Type': 'text/uri-list'})}).subscribe(
                 (data4: any) => {
@@ -259,7 +259,22 @@ export class CrudService {
           this.http.put(data._links.delegateReference.href, objectRef._links.self.href,
             {headers: new HttpHeaders({'Content-Type': 'text/uri-list'})}).subscribe(
             data4 => {
-              console.log(data4);
+              const signedMarket: string = data._links.signedMarket.href.replace('{?projection}', '');
+              const signedContract: string = data._links.signedContract.href.replace('{?projection}', '');
+
+              this.http.put(signedMarket, documentSignedMarket._links.self.href, {headers: new HttpHeaders({'Content-Type': 'text/uri-list'})}).subscribe(
+                (data4: any) => {
+                  this.http.put(signedContract, documentSignedContract._links.self.href,
+                    {headers: new HttpHeaders({'Content-Type': 'text/uri-list'})}).subscribe(data5 => {
+
+                  }, error1 => {
+                    console.log(error1);
+                  })
+
+                }, error => {
+                  console.log(error);
+                }
+              );
             }, error => {
               console.log(error);
             }

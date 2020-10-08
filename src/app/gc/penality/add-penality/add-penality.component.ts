@@ -64,6 +64,7 @@ export class AddPenalityComponent implements OnInit {
       //console.log(value._embedded.contrats);
       this.list = [];
       this.list = value._embedded.contrats;
+      //console.log(this.list);
     }, error => {
       console.log(error);
     });

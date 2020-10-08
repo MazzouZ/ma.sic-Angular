@@ -51,7 +51,7 @@ export class PenalityComponent implements OnInit {
   getPenalities() {
     this.crudService.getItems('penalities').subscribe(
       data => {
-        console.log(data);
+        //console.log(data);
         // @ts-ignore
         let listMed: Penality[] = data._embedded.penalities;
         this.dataSource = new MatTableDataSource();
