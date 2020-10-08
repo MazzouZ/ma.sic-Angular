@@ -18,6 +18,8 @@ export class DetailDelegComponent implements OnInit {
   parentComp:ParentCompElement={id : 0,socialReason : '',city:'',activitySector:''};
 
   structure:any;
+  Status:any;
+  ModeleJ:any;
   
   constructor(private interactionService: SharingService,private crudService:CrudService){ }
 
@@ -43,6 +45,28 @@ export class DetailDelegComponent implements OnInit {
                       // @ts-ignore
                       this.parentComp =data3;
                       console.log(this.parentComp);
+
+                      // @ts-ignore
+                const objectStatus = this.data._links.Status.href.replace('{?projection}', '');
+                // @ts-ignore
+                const objectModj = this.data._links.ModeleJ.href.replace('{?projection}', '');
+
+                // @ts-ignore
+                this.crudService.getlinkItem(objectStatus).subscribe(
+                  (data4)=>{
+                    // @ts-ignore
+                    this.Status =data4;
+                    console.log(this.Status);
+                    // @ts-ignore
+                this.crudService.getlinkItem(objectModj).subscribe(
+                  (data5)=>{
+                    // @ts-ignore
+                    this.ModeleJ =data5;
+                    console.log(this.ModeleJ);
+                  }
+                );
+                  }
+                );
                       
                     }
                   );

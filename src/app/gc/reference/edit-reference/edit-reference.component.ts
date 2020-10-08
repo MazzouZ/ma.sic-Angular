@@ -23,6 +23,9 @@ export class EditReferenceComponent implements OnInit {
 
  listStruct:Structure[];
  selectedValue:Structure;
+ listDoc:Document[];
+ selectedValueStatus:Document;
+ selectedValueModeleJ:Document;
 
  manager:ManagerElement={id : 0,name : '',firstname : '',tel : '', mail : ''};
  man:any;
@@ -53,6 +56,8 @@ export class EditReferenceComponent implements OnInit {
       Tel: ['', Validators.required],
       mail: ['', Validators.required],
       structure: [''],
+      Status: ['', Validators.required],
+      ModeleJ: ['', Validators.required],
     });
 
     this.data = this.interactionService.sharingValue;
@@ -74,7 +79,8 @@ export class EditReferenceComponent implements OnInit {
   }
 
   public updateRef() {
-    this.crudService.updateRefStructItem(this.data,this.selectedValue);
+    this.crudService.updateRefStructItem(this.data,this.selectedValue,
+      this.selectedValueStatus,this.selectedValueModeleJ);
     this.crudService.updateItem(this.manager);
     this.route.navigate(['/reference']); 
   }
@@ -91,6 +97,13 @@ export class EditReferenceComponent implements OnInit {
       (data)=>{
         // @ts-ignore
         this.selectedValue=data;
+      }
+    );
+
+    this.crudService.getItems('documents').subscribe(
+      (data)=>{
+        // @ts-ignore
+        this.listDoc=data._embedded.documents;
       }
     );
    }

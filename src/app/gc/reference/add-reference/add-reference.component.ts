@@ -22,6 +22,9 @@ export class AddReferenceComponent implements OnInit {
 
  listStruct:Structure[];
  selectedValue:Structure;
+ listDoc:Document[];
+ selectedValueStatus:Document;
+ selectedValueModeleJ:Document;
 
   manager:ManagerElement={id : 0,name : '',firstname : '',tel : '', mail : ''};
 
@@ -50,22 +53,31 @@ export class AddReferenceComponent implements OnInit {
       Tel: ['', Validators.required],
       mail: ['', Validators.required],
       structure: ['', Validators.required],
+      Status: ['', Validators.required],
+      ModeleJ: ['', Validators.required],
     });
-    this.getStruct();
+    this.getStructDoc();
   }
 
   public addRef() {
 
-    this.crudService.addManagerRefItem('sDLReferences',this.data,this.manager,this.selectedValue);
-  
+    this.crudService.addManagerRefItem('sDLReferences',this.data,this.manager,this.selectedValue,
+    this.selectedValueStatus,this.selectedValueModeleJ);
     this.route.navigate(['/reference']); 
  }
 
- getStruct(){
+ getStructDoc(){
   this.crudService.getItems('structures').subscribe(
     (data)=>{
       // @ts-ignore
       this.listStruct=data._embedded.structures;
+    }
+  );
+
+  this.crudService.getItems('documents').subscribe(
+    (data)=>{
+      // @ts-ignore
+      this.listDoc=data._embedded.documents;
     }
   );
  }

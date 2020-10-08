@@ -79,6 +79,20 @@
             </mat-option>
         </mat-select>
         </div>
+        <div class="form-group">
+          <mat-select class="form-control"  formControlName="Status" placeholder="Select your Status" [(ngModel)]="selectedValueStatus" name="Status">
+              <mat-option *ngFor="let rf of listDoc" [value]="rf">
+              {{rf.documentName}}
+              </mat-option>
+          </mat-select>
+          </div>
+          <div class="form-group">
+            <mat-select class="form-control"  formControlName="ModeleJ" placeholder="Select your ModeleJ" [(ngModel)]="selectedValueModeleJ" name="ModeleJ">
+                <mat-option *ngFor="let rf of listDoc" [value]="rf">
+                {{rf.documentName}}
+                </mat-option>
+            </mat-select>
+            </div>
        </div>
       <div>
         <button class="btn btn-danger" matStepperPrevious>Back</button>

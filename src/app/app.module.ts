@@ -63,6 +63,10 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {DetailContractComponent} from './gc/contract/detail-contract/detail-contract.component';
+import { InvestmentComponent } from './gc/investment/investment.component';
+import { AddInvestmentComponent } from './gc/investment/add-investment/add-investment.component';
+import { EditInvestmentComponent } from './gc/investment/edit-investment/edit-investment.component';
+import { DetailInvestmentComponent } from './gc/investment/detail-investment/detail-investment.component';
 
 @NgModule({
   declarations: [
@@ -106,6 +110,10 @@ import {DetailContractComponent} from './gc/contract/detail-contract/detail-cont
     AddContractDialogeComponent,
     EditContractDialogeComponent,
     DetailContractComponent,
+    InvestmentComponent,
+    AddInvestmentComponent,
+    EditInvestmentComponent,
+    DetailInvestmentComponent,
   ],
   imports: [
     BrowserModule,
