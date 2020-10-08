@@ -17,6 +17,8 @@ export class DetailComponent implements OnInit {
 
 
   structure:any;
+  Status:any;
+  ModeleJ:any;
   
   
   constructor(private interactionService: SharingService,private crudService:CrudService){ }
@@ -36,6 +38,28 @@ export class DetailComponent implements OnInit {
                 // @ts-ignore
                 this.structure =data3;
                 console.log(this.structure);
+
+                // @ts-ignore
+                const objectStatus = this.data._links.Status.href.replace('{?projection}', '');
+                // @ts-ignore
+                const objectModj = this.data._links.ModeleJ.href.replace('{?projection}', '');
+
+                // @ts-ignore
+                this.crudService.getlinkItem(objectStatus).subscribe(
+                  (data4)=>{
+                    // @ts-ignore
+                    this.Status =data4;
+                    console.log(this.Status);
+                    // @ts-ignore
+                this.crudService.getlinkItem(objectModj).subscribe(
+                  (data5)=>{
+                    // @ts-ignore
+                    this.ModeleJ =data5;
+                    console.log(this.ModeleJ);
+                  }
+                );
+                  }
+                );
               }
             );
           }

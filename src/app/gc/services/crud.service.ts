@@ -113,7 +113,7 @@ export class CrudService {
     );
   }
   
-  addManagerPcompRefItem(type :String,objectRef: any,objectMan:any,objectPc:any,objectStruct:any,objectDocModj:any,objectDocStatus:any) {
+  addManagerPcompRefItem(type :String,objectRef: any,objectMan:any,objectPc:any,objectStruct:any,objectDocStatus:any,objectDocModj:any) {
     return this.http.post(this.url+type,objectRef).subscribe(
       (data)=>{
         this.ref = data;
@@ -193,18 +193,18 @@ export class CrudService {
   }
 
   
-  updateRefStructItem(object, objectStruct,objectDocModj,objectDocStatus) {
-    return this.http.put(object._links.self.href, object).subscribe(
-      data => {
+  updateRefStructItem(object, objectStruct: any,objectDocStatus: any,objectDocModj: any) {
+    return this.http.put(object._links.self.href,object).subscribe(
+      (data: any) => {
         console.log(data);
         // @ts-ignore
         this.http.put(data._links.structure.href, objectStruct._links.self.href,
           {headers: new HttpHeaders({'Content-Type': 'text/uri-list'})}).subscribe(
-          data4 => {
+            data4 => {
             console.log(data4);
-
-            const objectStatus = this.ref._links.Status.href.replace('{?projection}', '');
-            const objectModj = this.ref._links.ModeleJ.href.replace('{?projection}', '');
+            
+            const objectStatus:string = data._links.Status.href.replace('{?projection}', '');
+            const objectModj:string = data._links.ModeleJ.href.replace('{?projection}', '');
 
                           this.http.put(objectStatus,objectDocStatus._links.self.href,
                             {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
@@ -214,20 +214,20 @@ export class CrudService {
                                 {headers:new HttpHeaders({'Content-Type':'text/uri-list'})}).subscribe(
                                 data6 =>{
                                   console.log(data6);
-                                },error => {
-                                  console.log(error);
+                                },error6 => {
+                                  console.log(error6);
                                 }
                                );
-                            },error => {
-                              console.log(error);
+                            },error5 => {
+                              console.log(error5);
                             }
                            );
-          }, error => {
-            console.log(error);
+          }, error4 => {
+            console.log(error4);
           }
         );
-      }, error => {
-        console.log(error);
+      }, error3 => {
+        console.log(error3);
 
       }
     );

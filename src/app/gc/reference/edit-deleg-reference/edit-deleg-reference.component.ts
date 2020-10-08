@@ -27,6 +27,9 @@ export class EditDelegReferenceComponent implements OnInit {
 
    listStruct:Structure[];
  selectedValue:Structure;
+ listDoc:Document[];
+ selectedValueStatus:Document;
+ selectedValueModeleJ:Document;
 
     man:any;
     dat:any;
@@ -58,6 +61,8 @@ export class EditDelegReferenceComponent implements OnInit {
       Tel: ['', Validators.required],
       mail: ['', Validators.required],
       structure: [''],
+      Status: ['', Validators.required],
+      ModeleJ: ['', Validators.required],
     });
     this.fourthFormGroup = this._formBuilder.group({
       foreignCompanySubsidiary: [false, Validators.required],
@@ -94,11 +99,13 @@ export class EditDelegReferenceComponent implements OnInit {
 
   editDelegRef(){
     if(this.data.foreignCompanySubsidiary){
-    this.crudService.updateRefStructItem(this.data,this.selectedValue);
+    this.crudService.updateRefStructItem(this.data,this.selectedValue,
+      this.selectedValueStatus,this.selectedValueModeleJ);
     this.crudService.updateItem(this.manager);
     this.crudService.updateItem(this.parentComp);
        }else{
-        this.crudService.updateRefStructItem(this.data,this.selectedValue);
+        this.crudService.updateRefStructItem(this.data,this.selectedValue,
+          this.selectedValueStatus,this.selectedValueModeleJ);
         this.crudService.updateItem(this.manager);
        }
     this.route.navigate(['/reference']); 
@@ -116,6 +123,13 @@ export class EditDelegReferenceComponent implements OnInit {
       (data)=>{
         // @ts-ignore
         this.selectedValue=data;
+      }
+    );
+
+    this.crudService.getItems('documents').subscribe(
+      (data)=>{
+        // @ts-ignore
+        this.listDoc=data._embedded.documents;
       }
     );
    }
